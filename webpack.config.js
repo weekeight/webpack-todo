@@ -1,6 +1,12 @@
+var Clean = require('clean-webpack-plugin');
+var webpack = require('webpack');
+
+var devEnv = JSON.parse(process.env.DEV || 'false');
+var onlineEnv = JSON.parse(process.env.ONLINE || 'false');
+
 var config = {
-  debug: true,
-  devtool: 'source-map',
+  debug: onlineEnv ? false : true,
+  devtool: onlineEnv ? '' : 'source-map',
 
   entry: {
     todo: "./src/js/app.jsx"
@@ -32,10 +38,19 @@ var config = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: ['file?hash=sha512&digest=hex&name=[path][name].[ext]']
+        loaders: ['file?hash=sha512&digest=hex&name=[hash].[ext]']
       }
     ]
-  }
+  },
+  plugins: [
+    !devEnv ? new Clean(['build']) : function(){},
+    !devEnv ? new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      minimize: true
+    }) : function(){},
+  ]
 };
 
 module.exports = config;
