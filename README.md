@@ -13,8 +13,8 @@ A Todo example using the following technology:
 ## Usage
 
 ```
-git clone git@github.com:weekeight/todo.git
-cd todo
+git clone git@github.com:weekeight/webpack-todo.git
+cd webpack-todo
 npm install --registry=https://registry.npm.taobao.org
 ```
 
