@@ -1,24 +1,33 @@
-var path = require('path');
-var webpack = require('webpack');
+var config = {
+  entry: {
+    todo: "./src/js/app.jsx"
+  },
 
-module.exports = {
-  entry: './src/js/app.jsx',
-  output: { path: __dirname + '/build', filename: 'todo.bundle.js' },
-  module: {
-    loaders: [
-      { test: /\.less$/, loader: "style!css!autoprefixer-loader!less" },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: ['file?hash=sha512&digest=hex&name=[hash].[ext]']
+  output: {
+    filename: "[name].bundle.js",
+    path: __dirname + '/build',
+  },
+
+  module: {
+    loaders: [
+    {
+        test: /\.css$/,
+        loader: "style!css"
       },
       {
-        test: /.(jsx|js)?$/,
-        loader: 'babel-loader',
+        test: /\.less$/,
+        loader: "style!css!autoprefixer-loader!less"
+      },
+      {
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
+        loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react']
+          presets: ['react', 'es2015']
         }
       }
     ]
-  },
+  }
 };
+
+module.exports = config;
