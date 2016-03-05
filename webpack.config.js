@@ -1,4 +1,7 @@
 var config = {
+  debug: true,
+  devtool: 'source-map',
+
   entry: {
     todo: "./src/js/app.jsx"
   },
