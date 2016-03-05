@@ -6,6 +6,7 @@ var config = {
   output: {
     filename: "[name].bundle.js",
     path: __dirname + '/build',
+    publicPath: "/build",
   },
 
   module: {
@@ -25,6 +26,10 @@ var config = {
         query: {
           presets: ['react', 'es2015']
         }
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: ['file?hash=sha512&digest=hex&name=[path][name].[ext]']
       }
     ]
   }
