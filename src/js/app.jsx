@@ -3,13 +3,13 @@ require('../less/app.less');
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-let TodoApp = React.createClass({
+class TodoApp extends React.Component{
   render(){
-    return <h1>todoapp by benfchen...</h1>
+    return <h1>todoapp by weekeight...</h1>
   }
-});
+}
 
-let Container = React.createClass({
+class Container extends React.Component{
   render(){
     return (
       <div>
@@ -24,6 +24,6 @@ let Container = React.createClass({
       </div>
     );
   }
-});
+}
 
 ReactDOM.render(<Container />, document.getElementById('container'));

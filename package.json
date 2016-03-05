@@ -4,7 +4,8 @@
   "description": "todo app built with reactjs and flux",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --colors --progress --port 3000",
+    "build": "webpack"
   },
   "keywords": [
     "reactjs",
